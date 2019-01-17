@@ -9,7 +9,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Operation operation;
-    private double digitMemory;
+    private double operand1, operand2, digitMemory;
     private double resultMemory;
 
     private TextView operationLabel, resultLabel;
@@ -19,9 +19,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        operationLabel = findViewById(R.id.operationLabel);
-        resultLabel = findViewById(R.id.resultLabel);
-
         initialize();
     }
 
@@ -29,6 +26,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         operation = Operation.None;
         digitMemory = 0;
         resultMemory = 0;
+
+        operand1 = Double.NaN;
+        operand2 = Double.NaN;
     }
 
     @Override
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button b = (Button) v;
         String butText = b.getText().toString();
 
-        String[] numbers = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+        String[] numbers = {"0", "1", "2", "3", "4", "5", "6", "7", "8"}; //, getString(R.string.plus), getString(R.string.minus), getString(R.string.times), getString(R.string.obelus)};
         String[] operands = {getString(R.string.plus), getString(R.string.minus), getString(R.string.times), getString(R.string.obelus)};
 
         int index = -1;
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // found it, print text or append.
         if (index != -1) {
-            assignNumber(butText);
+            //assignNumber(butText);
             return;
         }
 
@@ -61,52 +61,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         if (index != -1) {
-            assignOperation(butText);
+            //assignOperation(butText);
             return;
         }
 
         if (butText.equalsIgnoreCase(getString(R.string.clear_button)))
             clear();
-    }
-
-    private void assignNumber(String number) {
-        String s = operationLabel.getText().toString();
-        if (s.isEmpty() || s.equalsIgnoreCase("0")) {
-            s = "" + number;
-        }
-        else {
-            s += "" + number;
-        }
-        operationLabel.setText(s);
-    }
-
-    private void assignOperation(String operation) {
-        final String plus = getString(R.string.plus);
-        final String minus = getString(R.string.minus);
-        final String times = getString(R.string.times);
-        final String obelus = getString(R.string.obelus);
-
-        if (operation.equalsIgnoreCase(plus))
-            this.operation = Operation.Addition;
-        else if (operation.equalsIgnoreCase(minus))
-            this.operation = Operation.Subtraction;
-        else if (operation.equalsIgnoreCase(times))
-            this.operation = Operation.Multiplication;
-        else if (operation.equalsIgnoreCase(obelus))
-            this.operation = Operation.Division;
-
-        String s = operationLabel.getText() + this.operation.getValue();
-        operationLabel.setText(s);
-    }
-
-    private void doOperation() {
-
-        String s = operationLabel.getText().toString();
-        String[] a = s.split(operation.getValue());
-
-        for (int i = 0; i < a.length; i++) {
-            // Todo: calculate all operands
-        }
+        else if (butText.equalsIgnoreCase(getString(R.string.result_button)))
+            clear();
     }
 
     private void clear() {
