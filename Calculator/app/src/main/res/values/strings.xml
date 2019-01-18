@@ -10,5 +10,6 @@
     <string name="obelus">÷</string>
     <string name="clear_button">C</string>
     <string name="clear_entry_button">CE</string>
+    <string name="del_button">Del</string>
     <string name="result_button">=</string>
 </resources>

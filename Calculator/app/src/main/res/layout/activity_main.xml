@@ -69,6 +69,7 @@
             />
 
         <TextView
+            android:id="@+id/resultLabel"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="@id/resultPanel"
@@ -144,7 +145,7 @@
             app:layout_constraintStart_toEndOf="@id/buttonClearEntry"
             app:layout_constraintEnd_toEndOf="@id/commandPanel"
             app:layout_constraintBottom_toBottomOf="@id/commandPanel"
-            android:text="Del"
+            android:text="@string/del_button"
             android:textSize="@dimen/button_text_size_small"
             android:background="?selectableItemBackgroundBorderless"
             android:onClick="onClick"

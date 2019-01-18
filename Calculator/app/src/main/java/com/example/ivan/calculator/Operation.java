@@ -1,7 +1,5 @@
 package com.example.ivan.calculator;
 
-import android.content.res.Resources;
-
 public enum Operation {
     None(""),
     Addition("+"),
