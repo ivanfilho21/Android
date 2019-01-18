@@ -1,5 +1,9 @@
 # AndroidTests
-Tests with Constraint Layout in Android Studio
+Tests with Constraint Layout in Android Studio.
 
-This project is in development.
-I am making this project so that I can learn the basics of Constraint Layout.
+Calculator:
+  A simple Android application that takes two numbers and gives the result of the selected operation.
+
+<div align="center">
+    <img src="https://i.postimg.cc/Y21tcMBh/Screenshot-20190118-181140.png" width="300px"</img> 
+</div>
