@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Calculadora</string>
+    <string name="operand_one">1º Operando</string>
+    <string name="operand_two">2º Operando</string>
+    <string name="result">Resultado</string>
+    <string name="hide_labels">Esconder Rótulos</string>
+    <string name="show_labels">Mostrar Rótulos</string>
+    <string name="about">Sobre</string>
+    <string name="about_message">App desenvolvido por Ivan21. Obrigado por utilizá-lo.</string>
+    <string name="cannot_divide_by_zero">Não pode dividir por Zero.</string>
+</resources>

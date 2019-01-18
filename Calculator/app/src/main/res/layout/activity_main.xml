@@ -6,18 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!--
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:background="@color/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        />-->
-
     <android.support.constraint.ConstraintLayout
         android:id="@+id/resultPanel"
         android:layout_width="match_parent"
@@ -27,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/resultGuideline"
         android:theme="@style/Theme.AppCompat.Light"
-        android:background="@color/colorAccent">
+        android:background="@color/colorResultPanel">
 
         <android.support.constraint.Guideline
             android:id="@+id/resultLabelGuideline"
@@ -44,8 +32,8 @@
             android:layout_marginBottom="4dp"
             app:layout_constraintTop_toTopOf="@id/resultPanel"
             app:layout_constraintBottom_toTopOf="@id/operand1"
-            app:layout_constraintStart_toStartOf="@id/operand1"
-            app:layout_constraintEnd_toEndOf="@id/operand1"
+            app:layout_constraintLeft_toLeftOf="@id/operand1"
+            app:layout_constraintRight_toRightOf="@id/operand1"
             android:text="@string/operand_one"
             android:textAlignment="center"
             android:gravity="center"
@@ -59,12 +47,13 @@
             android:layout_margin="@dimen/small_margin_start"
             app:layout_constraintTop_toBottomOf="@id/operand1Label"
             app:layout_constraintBottom_toTopOf="@id/resultLabelGuideline"
-            app:layout_constraintStart_toStartOf="@id/resultPanel"
-            app:layout_constraintEnd_toStartOf="@id/operatorLabel"
+            app:layout_constraintLeft_toLeftOf="@id/resultPanel"
+            app:layout_constraintRight_toLeftOf="@id/operatorLabel"
             android:textSize="28sp"
             android:textAlignment="center"
             android:gravity="center"
             android:text="Foo"
+            android:padding="@dimen/small_margin_start"
             android:background="@android:drawable/divider_horizontal_bright"
             />
 
@@ -90,8 +79,8 @@
             android:layout_marginBottom="4dp"
             app:layout_constraintTop_toTopOf="@id/resultPanel"
             app:layout_constraintBottom_toTopOf="@id/operand2"
-            app:layout_constraintStart_toStartOf="@id/operand2"
-            app:layout_constraintEnd_toEndOf="@id/operand2"
+            app:layout_constraintLeft_toLeftOf="@id/operand2"
+            app:layout_constraintRight_toRightOf="@id/operand2"
             android:text="@string/operand_two"
             android:textAlignment="center"
             android:gravity="center"
@@ -105,12 +94,13 @@
             android:layout_margin="@dimen/small_margin_start"
             app:layout_constraintTop_toBottomOf="@id/operand2Label"
             app:layout_constraintBottom_toTopOf="@id/resultLabelGuideline"
-            app:layout_constraintStart_toEndOf="@id/operatorLabel"
-            app:layout_constraintEnd_toEndOf="@id/resultPanel"
+            app:layout_constraintLeft_toRightOf="@id/operatorLabel"
+            app:layout_constraintRight_toRightOf="@id/resultPanel"
             android:textSize="28sp"
             android:textAlignment="center"
             android:gravity="center"
             android:text="Bar"
+            android:padding="@dimen/small_margin_start"
             android:background="@android:drawable/divider_horizontal_textfield"
             />
 
@@ -159,19 +149,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.75" />
+        app:layout_constraintGuide_percent="0.78" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/commandPanel"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/colorAccent"
         android:theme="@style/Theme.AppCompat"
         app:layout_constraintTop_toBottomOf="@id/resultPanel"
         app:layout_constraintBottom_toTopOf="@id/numberPanel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent=".12">
+        app:layout_constraintHeight_percent=".08">
 
         <Button
             android:id="@+id/buttonClear"
@@ -233,8 +223,8 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintTop_toTopOf="@id/numberPanel"
-            app:layout_constraintStart_toStartOf="@id/numberPanel"
-            app:layout_constraintEnd_toStartOf="@id/button8"
+            app:layout_constraintLeft_toLeftOf="@id/numberPanel"
+            app:layout_constraintRight_toLeftOf="@id/button8"
             app:layout_constraintBottom_toTopOf="@id/button4"
             android:text="7"
             android:textSize="@dimen/button_text_size"
@@ -247,8 +237,8 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintTop_toTopOf="@id/numberPanel"
-            app:layout_constraintStart_toEndOf="@id/button7"
-            app:layout_constraintEnd_toStartOf="@id/button9"
+            app:layout_constraintLeft_toRightOf="@id/button7"
+            app:layout_constraintRight_toLeftOf="@id/button9"
             app:layout_constraintBottom_toTopOf="@id/button5"
             android:text="8"
             android:textSize="@dimen/button_text_size"
@@ -261,8 +251,8 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintTop_toTopOf="@id/numberPanel"
-            app:layout_constraintStart_toEndOf="@id/button8"
-            app:layout_constraintEnd_toEndOf="@id/numberPanel"
+            app:layout_constraintLeft_toRightOf="@id/button8"
+            app:layout_constraintRight_toRightOf="@id/numberPanel"
             app:layout_constraintBottom_toTopOf="@id/button6"
             android:text="9"
             android:textSize="@dimen/button_text_size"
@@ -275,8 +265,8 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintTop_toBottomOf="@id/button7"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/button5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/button5"
             app:layout_constraintBottom_toTopOf="@id/button1"
             android:text="4"
             android:textSize="@dimen/button_text_size"
@@ -289,8 +279,8 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintTop_toBottomOf="@id/button8"
-            app:layout_constraintStart_toEndOf="@id/button4"
-            app:layout_constraintEnd_toStartOf="@id/button6"
+            app:layout_constraintLeft_toRightOf="@id/button4"
+            app:layout_constraintRight_toLeftOf="@id/button6"
             app:layout_constraintBottom_toTopOf="@id/button2"
             android:text="5"
             android:textSize="@dimen/button_text_size"
@@ -303,8 +293,8 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintTop_toBottomOf="@id/button9"
-            app:layout_constraintStart_toEndOf="@id/button5"
-            app:layout_constraintEnd_toEndOf="@id/numberPanel"
+            app:layout_constraintLeft_toRightOf="@id/button5"
+            app:layout_constraintRight_toRightOf="@id/numberPanel"
             app:layout_constraintBottom_toTopOf="@id/button3"
             android:text="6"
             android:textSize="@dimen/button_text_size"
@@ -317,9 +307,9 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintTop_toBottomOf="@id/button4"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/button2"
-            app:layout_constraintBottom_toTopOf="@id/buttonDecimal"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/button2"
+            app:layout_constraintBottom_toTopOf="@id/button0"
             android:text="1"
             android:textSize="@dimen/button_text_size"
             android:background="?selectableItemBackgroundBorderless"
@@ -331,8 +321,8 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintTop_toBottomOf="@id/button5"
-            app:layout_constraintStart_toEndOf="@id/button1"
-            app:layout_constraintEnd_toStartOf="@id/button3"
+            app:layout_constraintLeft_toRightOf="@id/button1"
+            app:layout_constraintRight_toLeftOf="@id/button3"
             app:layout_constraintBottom_toTopOf="@id/button0"
             android:text="2"
             android:textSize="@dimen/button_text_size"
@@ -345,8 +335,8 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintTop_toBottomOf="@id/button6"
-            app:layout_constraintStart_toEndOf="@id/button2"
-            app:layout_constraintEnd_toEndOf="@id/numberPanel"
+            app:layout_constraintLeft_toRightOf="@id/button2"
+            app:layout_constraintRight_toRightOf="@id/numberPanel"
             app:layout_constraintBottom_toTopOf="@id/button0"
             android:text="3"
             android:textSize="@dimen/button_text_size"
@@ -355,41 +345,14 @@
             />
 
         <Button
-            android:id="@+id/buttonDecimal"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/button1"
-            app:layout_constraintBottom_toBottomOf="@id/numberPanel"
-            app:layout_constraintStart_toStartOf="@id/numberPanel"
-            app:layout_constraintEnd_toStartOf="@id/button0"
-            android:text="@string/period"
-            android:textSize="@dimen/button_text_size"
-            android:background="?selectableItemBackgroundBorderless"
-            />
-
-        <Button
             android:id="@+id/button0"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/button3"
+            app:layout_constraintTop_toBottomOf="@id/button2"
             app:layout_constraintBottom_toBottomOf="@id/numberPanel"
-            app:layout_constraintStart_toEndOf="@id/buttonDecimal"
-            app:layout_constraintEnd_toStartOf="@id/buttonResult"
+            app:layout_constraintStart_toStartOf="@id/button2"
+            app:layout_constraintEnd_toEndOf="@id/button2"
             android:text="0"
-            android:textSize="@dimen/button_text_size"
-            android:background="?selectableItemBackgroundBorderless"
-            android:onClick="onClick"
-            />
-
-        <Button
-            android:id="@+id/buttonResult"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/button3"
-            app:layout_constraintStart_toEndOf="@id/button0"
-            app:layout_constraintEnd_toEndOf="@id/numberPanel"
-            app:layout_constraintBottom_toBottomOf="@id/numberPanel"
-            android:text="@string/result_button"
             android:textSize="@dimen/button_text_size"
             android:background="?selectableItemBackgroundBorderless"
             android:onClick="onClick"
@@ -457,9 +420,24 @@
             app:layout_constraintTop_toBottomOf="@id/buttonSubtract"
             app:layout_constraintStart_toStartOf="@id/operationPanel"
             app:layout_constraintEnd_toEndOf="@id/operationPanel"
-            app:layout_constraintBottom_toBottomOf="@id/operationPanel"
+            app:layout_constraintBottom_toTopOf="@id/buttonResult"
             android:text="@string/plus"
             android:textSize="@dimen/button_text_size_small"
+            android:background="?selectableItemBackgroundBorderless"
+            android:onClick="onClick"
+            />
+
+
+        <Button
+            android:id="@+id/buttonResult"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/buttonPlus"
+            app:layout_constraintStart_toStartOf="@id/operationPanel"
+            app:layout_constraintEnd_toEndOf="@id/operationPanel"
+            app:layout_constraintBottom_toBottomOf="@id/operationPanel"
+            android:text="@string/result_button"
+            android:textSize="@dimen/button_text_size"
             android:background="?selectableItemBackgroundBorderless"
             android:onClick="onClick"
             />

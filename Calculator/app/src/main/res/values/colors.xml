@@ -2,11 +2,7 @@
 <resources>
     <color name="colorPrimary">#00695C</color>
     <color name="colorPrimaryDark">#004D40</color>
-    <color name="colorAccent">#E0F2F1</color>
+    <color name="colorAccent">#1b90d8</color>
 
-    <color name="darkPrimary">#008577</color>
-    <color name="darkPrimaryDark">#00574B</color>
-    <color name="darkAccent">#1b90d8</color>
-
-    <color name="colorButtonTextDark">@android:color/primary_text_dark</color>
+    <color name="colorResultPanel">#E0F2F1</color>
 </resources>

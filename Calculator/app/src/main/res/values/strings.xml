@@ -1,17 +1,14 @@
 <resources>
     <string name="app_name">Calculator</string>
-    <string name="dummy">Foo bar</string>
-    <string name="none">None</string>
 
-    <string name="period">.</string>
-    <string name="plus">+</string>
-    <string name="minus">−</string>
-    <string name="times">×</string>
-    <string name="obelus">÷</string>
-    <string name="clear_button">C</string>
-    <string name="clear_entry_button">CE</string>
-    <string name="del_button">Del</string>
-    <string name="result_button">=</string>
+    <string name="plus" translatable="false">+</string>
+    <string name="minus" translatable="false">−</string>
+    <string name="times" translatable="false">×</string>
+    <string name="obelus" translatable="false">÷</string>
+    <string name="clear_button" translatable="false">C</string>
+    <string name="clear_entry_button" translatable="false">CE</string>
+    <string name="del_button" translatable="false">Del</string>
+    <string name="result_button" translatable="false">=</string>
 
     <string name="operand_one">First Operand</string>
     <string name="operand_two">Second Operand</string>
@@ -20,4 +17,6 @@
     <string name="hide_labels">Hide Labels</string>
     <string name="show_labels">Show Labels</string>
     <string name="about">About</string>
+    <string name="about_message">App developed by Ivan21. Thank you for using it.</string>
+    <string name="cannot_divide_by_zero">Can\'t divide by Zero.</string>
 </resources>
