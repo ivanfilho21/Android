@@ -6,15 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!--
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        />-->
+
     <android.support.constraint.ConstraintLayout
         android:id="@+id/resultPanel"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/resultGuideline"
         android:theme="@style/Theme.AppCompat.Light"
-        android:background="#d1e9b4">
+        android:background="@color/colorAccent">
 
         <android.support.constraint.Guideline
             android:id="@+id/resultLabelGuideline"
@@ -24,11 +37,27 @@
             app:layout_constraintGuide_percent="0.7" />
 
         <TextView
+            android:id="@+id/operand1Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            app:layout_constraintTop_toTopOf="@id/resultPanel"
+            app:layout_constraintBottom_toTopOf="@id/operand1"
+            app:layout_constraintStart_toStartOf="@id/operand1"
+            app:layout_constraintEnd_toEndOf="@id/operand1"
+            android:text="@string/operand_one"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textSize="@dimen/button_text_size_smaller"
+            />
+
+        <TextView
             android:id="@+id/operand1"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="@dimen/small_margin_start"
-            app:layout_constraintTop_toTopOf="@id/resultPanel"
+            app:layout_constraintTop_toBottomOf="@id/operand1Label"
             app:layout_constraintBottom_toTopOf="@id/resultLabelGuideline"
             app:layout_constraintStart_toStartOf="@id/resultPanel"
             app:layout_constraintEnd_toStartOf="@id/operatorLabel"
@@ -36,7 +65,7 @@
             android:textAlignment="center"
             android:gravity="center"
             android:text="Foo"
-            android:background="@android:drawable/divider_horizontal_textfield"
+            android:background="@android:drawable/divider_horizontal_bright"
             />
 
         <TextView
@@ -48,9 +77,25 @@
             app:layout_constraintStart_toEndOf="@id/operand1"
             app:layout_constraintEnd_toStartOf="@id/operand2"
             app:layout_constraintWidth_percent="0.1"
-            android:text="@string/obelus"
+            android:text="@string/plus"
             android:gravity="center"
             android:textSize="48sp"
+            />
+
+        <TextView
+            android:id="@+id/operand2Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            app:layout_constraintTop_toTopOf="@id/resultPanel"
+            app:layout_constraintBottom_toTopOf="@id/operand2"
+            app:layout_constraintStart_toStartOf="@id/operand2"
+            app:layout_constraintEnd_toEndOf="@id/operand2"
+            android:text="@string/operand_two"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textSize="@dimen/button_text_size_smaller"
             />
 
         <TextView
@@ -58,7 +103,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="@dimen/small_margin_start"
-            app:layout_constraintTop_toTopOf="@id/resultPanel"
+            app:layout_constraintTop_toBottomOf="@id/operand2Label"
             app:layout_constraintBottom_toTopOf="@id/resultLabelGuideline"
             app:layout_constraintStart_toEndOf="@id/operatorLabel"
             app:layout_constraintEnd_toEndOf="@id/resultPanel"
@@ -66,17 +111,35 @@
             android:textAlignment="center"
             android:gravity="center"
             android:text="Bar"
+            android:background="@android:drawable/divider_horizontal_textfield"
             />
 
         <TextView
             android:id="@+id/resultLabel"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/resultLabelGuideline"
+            app:layout_constraintBottom_toTopOf="@id/result"
             app:layout_constraintStart_toStartOf="@id/resultPanel"
             app:layout_constraintEnd_toEndOf="@id/resultPanel"
-            app:layout_constraintTop_toBottomOf="@id/resultLabelGuideline"
+            android:text="@string/result"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textSize="@dimen/button_text_size_smaller"
+            />
+
+        <TextView
+            android:id="@+id/result"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/small_margin_start"
+            android:layout_marginEnd="@dimen/small_margin_start"
+            android:layout_marginBottom="@dimen/small_margin_start"
+            app:layout_constraintStart_toStartOf="@id/resultPanel"
+            app:layout_constraintEnd_toEndOf="@id/resultPanel"
+            app:layout_constraintTop_toBottomOf="@id/resultLabel"
             app:layout_constraintBottom_toBottomOf="@id/resultPanel"
-            android:text="Result"
+            android:text="FooBar"
             android:textSize="@dimen/button_text_size"
             android:gravity="center"
             android:textAlignment="center"
@@ -89,7 +152,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.3" />
+        app:layout_constraintGuide_percent="0.4" />
 
     <android.support.constraint.Guideline
         android:id="@+id/numberGuideline"
@@ -103,6 +166,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/colorPrimary"
+        android:theme="@style/Theme.AppCompat"
         app:layout_constraintTop_toBottomOf="@id/resultPanel"
         app:layout_constraintBottom_toTopOf="@id/numberPanel"
         app:layout_constraintStart_toStartOf="parent"
@@ -158,6 +222,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/colorPrimaryDark"
+        android:theme="@style/Theme.AppCompat"
         app:layout_constraintTop_toBottomOf="@id/commandPanel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/numberGuideline"
@@ -337,6 +402,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/colorPrimary"
+        android:theme="@style/Theme.AppCompat"
         app:layout_constraintTop_toBottomOf="@id/commandPanel"
         app:layout_constraintStart_toEndOf="@id/numberGuideline"
         app:layout_constraintEnd_toEndOf="parent"

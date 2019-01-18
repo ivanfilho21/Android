@@ -12,4 +12,12 @@
     <string name="clear_entry_button">CE</string>
     <string name="del_button">Del</string>
     <string name="result_button">=</string>
+
+    <string name="operand_one">First Operand</string>
+    <string name="operand_two">Second Operand</string>
+    <string name="result">Result</string>
+
+    <string name="hide_labels">Hide Labels</string>
+    <string name="show_labels">Show Labels</string>
+    <string name="about">About</string>
 </resources>

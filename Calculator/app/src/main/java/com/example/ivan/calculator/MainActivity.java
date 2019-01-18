@@ -3,6 +3,8 @@ package com.example.ivan.calculator;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -15,7 +17,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private int currentOperandIndex;
     private double operand1, operand2, resultMemory;
     private TextView operand1Label, operand2Label, operatorLabel, resultLabel;
-    private Drawable default_background;
+    private Drawable background, default_background;
 
     DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
@@ -23,20 +25,71 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        /*
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(getTitle());
+        }
+        //toolbar.setSubtitle("");
+        toolbar.inflateMenu(R.menu.menu);*/
 
         operand1Label = findViewById(R.id.operand1);
         operand2Label = findViewById(R.id.operand2);
         operatorLabel = findViewById(R.id.operatorLabel);
-        resultLabel = findViewById(R.id.resultLabel);
+        resultLabel = findViewById(R.id.result);
 
+        operand1Label.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setOperandIndex(0);
+            }
+        });
+        operand2Label.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setOperandIndex(1);
+            }
+        });
+
+        background = operand1Label.getBackground();
         default_background = operand2Label.getBackground();
 
         initialize();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.show_hide_labels:
+                if (item.getTitle() == getString(R.string.hide_labels)) {
+                    findViewById(R.id.operand1Label).setVisibility(View.GONE);
+                    findViewById(R.id.operand2Label).setVisibility(View.GONE);
+                    findViewById(R.id.resultLabel).setVisibility(View.GONE);
+
+                    item.setTitle(getString(R.string.show_labels));
+                } else {
+                    findViewById(R.id.operand1Label).setVisibility(View.VISIBLE);
+                    findViewById(R.id.operand2Label).setVisibility(View.VISIBLE);
+                    findViewById(R.id.resultLabel).setVisibility(View.VISIBLE);
+
+                    item.setTitle(getString(R.string.hide_labels));
+                }
+                return true;
+            case R.id.about:
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     private void initialize() {
         resetOperandIndex();
-        operation = Operation.None;
         resultMemory = 0;
 
         operand1 = 0;
@@ -50,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         resultLabel.setText(null);
 
-        operatorLabel.setText(operation.value);
+        assignOperation(Operation.None.value);
     }
 
     @Override
@@ -82,7 +135,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         if (index != -1) {
-            //assignOperation(butText);
+            assignOperation(butText);
             return;
         }
 
@@ -93,7 +146,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         else if (butText.equalsIgnoreCase(getString(R.string.del_button)))
             clear();
         else if (butText.equalsIgnoreCase(getString(R.string.result_button)))
-            toggleOperandIndex(); // Testing this...
+            doOperation();
     }
 
     private String convertToFormat(double value) {
@@ -108,30 +161,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setCurrentOperand(0, false);
     }
 
-    private void changeOperandIndex(int i) {
-        Drawable background = getResources().getDrawable( android.R.drawable.divider_horizontal_textfield);
-
+    private void setOperandIndex(int i) {
         currentOperandIndex = i;
 
         if (currentOperandIndex == 0) {
             operand1Label.setBackgroundDrawable( background );
             operand2Label.setBackgroundDrawable( default_background );
-
         }
         else{
             operand1Label.setBackgroundDrawable( default_background );
             operand2Label.setBackgroundDrawable( background );
         }
-
     }
 
     private void resetOperandIndex() {
-        changeOperandIndex(0);
+        setOperandIndex(0);
     }
 
     private void toggleOperandIndex() {
-        if (currentOperandIndex == 0) changeOperandIndex(1);
-        else changeOperandIndex(0);
+        if (currentOperandIndex == 0) setOperandIndex(1);
+        else setOperandIndex(0);
     }
 
     private void setCurrentOperand(double n, boolean append) {
@@ -156,14 +205,39 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private double getCurrentOperand() {
-        if (currentOperandIndex == 0)
-            return operand1;
-        else
-            return operand2;
+        return currentOperandIndex == 0 ? operand1 : operand2;
     }
 
     private void assignNumber(String buttonText) {
         boolean append = Double.compare(getCurrentOperand(), 0) != 0;
         setCurrentOperand(Double.parseDouble(buttonText), append);
+    }
+
+    private void assignOperation(String operationText) {
+        operation = Operation.getOperation(operationText);
+        operatorLabel.setText(operationText);
+        if (operation != Operation.None)
+            setOperandIndex(1);
+    }
+
+    private void doOperation() {
+        if (Double.isNaN(operand2)) {
+            if (operation == Operation.Multiplication || operation == Operation.Division) {
+                operand2 = 1;
+            }
+            else {
+                operand2 = 0;
+            }
+        }
+
+        double r = 0;
+        switch (operation) {
+            case Addition: r = operand1 + operand2; break;
+            case Subtraction: r = operand1 - operand2; break;
+            case Multiplication: r = operand1 * operand2; break;
+            case Division: r = operand1 / operand2; break;
+            case None: resultLabel.setText(null); return;
+        }
+        resultLabel.setText(convertToFormat(r));
     }
 }
