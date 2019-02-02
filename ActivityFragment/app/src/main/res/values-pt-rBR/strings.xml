@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="label_your_name">Digite seu nome:</string>
+    <string name="label_fragment">Conteúdo do Fragment</string>
+    <string name="label_result">Resultado:</string>
+    <string name="button_send">Enviar para o Parent</string>
+    <string name="label_parent">Conteúdo do Parent</string>
+    <string name="label_choose_fragment">Escolha um Fragment:</string>
+    <string name="label_your_color">Qual sua cor favorita?</string>
+    <string name="color_blue">Azul</string>
+    <string name="color_green">Verde</string>
+    <string name="color_red">Vermelho</string>
+</resources>

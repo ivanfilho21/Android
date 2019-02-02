@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name" translatable="false">ActivityFragment</string>
+    <string name="label_your_name">Enter your name:</string>
+    <string name="label_fragment">Fragment Content</string>
+    <string name="label_result">Result:</string>
+    <string name="button_send">Send to Parent</string>
+    <string name="label_parent">Parent Content</string>
+    <string name="label_choose_fragment">Pick a Fragment:</string>
+
+    <string-array name="spinner_content">
+        <item>Fragment 1</item>
+        <item>Fragment 2</item>
+    </string-array>
+    <string name="label_your_color">What is your favorite color?</string>
+    <string name="color_blue">Blue</string>
+    <string name="color_green">Green</string>
+    <string name="color_red">Red</string>
+</resources>
