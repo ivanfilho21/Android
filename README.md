@@ -7,4 +7,4 @@ Some projects to learn basic concepts of Android.
 * Design Patterns.
 
 ### Author
-> Ivan Filho
+> Ivan Filho.
