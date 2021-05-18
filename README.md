@@ -1,10 +1,12 @@
 # AndroidTests
-Some projects to learn basic concepts of Android.
+Some projects to learn the basic concepts of Android.
 
 ## Important Concepts
+* Kotlin.
 * Constraint Layout.
 * Material Design.
 * Design Patterns.
+* Architecture Components.
 
 ### Author
 > Ivan Filho.
