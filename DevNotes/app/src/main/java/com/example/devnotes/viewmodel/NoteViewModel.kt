@@ -6,8 +6,11 @@ import com.example.devnotes.repository.NoteRepository
 import kotlinx.coroutines.launch
 
 class NoteViewModel(private val repository: NoteRepository) : ViewModel() {
-    val allNotes: LiveData<List<Note>> = repository.allNotes.asLiveData()
+    private val _test = MutableLiveData(0)
+    private val _allNotes = repository.allNotes.asLiveData()
 
+    var test: LiveData<Int> = _test
+    val allNotes: LiveData<List<Note>> = _allNotes
     /**
      * Abrindo uma nova corrotina para inserir o dado de forma não bloqueante
      */

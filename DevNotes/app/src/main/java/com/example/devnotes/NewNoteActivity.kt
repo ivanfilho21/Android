@@ -35,6 +35,7 @@ class NewNoteActivity : AppCompatActivity() {
     }
 
     companion object {
+        const val NOTE_ID = "note.id"
         const val NOTE_TITLE = "note.title"
         const val NOTE_BODY = "note.body"
     }
